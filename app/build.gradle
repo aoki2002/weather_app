@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.weather_app"
-        minSdk 33
+        minSdk 28
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    configurations {
+        cleanedAnnotations
+        compile.exclude group: 'org.jetbrains' , module:'annotations'
     }
 }
 
