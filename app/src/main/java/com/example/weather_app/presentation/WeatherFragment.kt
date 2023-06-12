@@ -1,20 +1,20 @@
-package com.example.weather_app.view
+package com.example.weather_app.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.weather_app.MainContract
+import com.example.weather_app.presentation.WeatherContract
 import com.example.weather_app.R
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.weather_app.presenter.MainPresenter
+import com.example.weather_app.presentation.WeatherPresenter
 
-class MainFragment: Fragment(), MainContract.View {
+class WeatherFragment: Fragment(), WeatherContract.View {
 
-    override lateinit var presenter: MainContract.Presenter
+    override lateinit var presenter: WeatherContract.Presenter
     lateinit var editText :EditText
     lateinit var button :Button
     lateinit var textView :TextView
@@ -32,7 +32,7 @@ class MainFragment: Fragment(), MainContract.View {
         button = view.findViewById<Button>(R.id.weather_btn1)
         textView = view.findViewById<TextView>(R.id.weather_txt2)
 
-        presenter = MainPresenter(this)
+        presenter = WeatherPresenter(this)
 
         presenter.start()
 
