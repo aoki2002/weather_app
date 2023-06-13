@@ -1,16 +1,16 @@
-package com.example.weather_app.presentation
+package com.example.weather_app.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.weather_app.presentation.WeatherContract
+import com.example.weather_app.common.WeatherContract
 import com.example.weather_app.R
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.weather_app.presentation.WeatherPresenter
+import com.example.weather_app.presenter.WeatherPresenter
 
 class WeatherFragment: Fragment(), WeatherContract.View {
 
