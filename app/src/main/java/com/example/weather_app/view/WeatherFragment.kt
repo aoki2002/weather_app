@@ -40,8 +40,4 @@ class WeatherFragment: Fragment(), WeatherContract.View {
             presenter.onClickButton(editText.text.toString())
         }
     }
-
-    override fun showTextView(text: String) {
-        textView.text = text
-    }
 }

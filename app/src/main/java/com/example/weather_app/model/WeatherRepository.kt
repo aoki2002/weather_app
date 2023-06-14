@@ -6,7 +6,7 @@ interface WeatherRepository {
 
     interface LocalRepository {
 
-        fun getAreaNumbers(text: String)
+        fun getAreaId(key: String)
     }
 
     interface RemoteRepository {

@@ -2,13 +2,13 @@ package com.example.weather_app.model
 
 data class WeatherEntity (
 
-    var LocalItem: ArrayList<LocalData>?,
+    val LocalItem: ArrayList<LocalData>?,
 
-    var RemoteItem: ArrayList<RemoteData>?
+    val RemoteItem: ArrayList<RemoteData>?
 ) {
     data class LocalData (
 
-        var areaKey: String = ""
+        val prefecture: Map<String, Int>
     )
 
     data class RemoteData (
