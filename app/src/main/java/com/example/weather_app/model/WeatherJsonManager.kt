@@ -1,11 +1,12 @@
 package com.example.weather_app.model
 
+import android.content.Context
 import com.google.gson.Gson
 import java.io.File
 
-class WeatherJsonManager: WeatherRepository.LocalRepository {
+class WeatherJsonManager(context: Context): WeatherRepository.LocalRepository {
 
-    override fun getAreaId(key: String) {
+    override fun getAreaId(key: String):String {
 
         val jsonFile = File("../assets/AreaNumber.json")
 
@@ -13,6 +14,6 @@ class WeatherJsonManager: WeatherRepository.LocalRepository {
 
         val data = Gson().fromJson(json, WeatherEntity.LocalData::class.java)
 
-        val id = data.prefecture[key]
+        return data.prefecture[key].toString()
     }
 }

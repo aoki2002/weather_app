@@ -7,7 +7,9 @@ interface WeatherContract {
 
     interface View: BaseView<Presenter> {
 
+        fun showAreaTitleTextView(text: String)
 
+        fun showAreaWeatherTextView(text: String)
     }
 
     interface Presenter: BasePresenter {

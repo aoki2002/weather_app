@@ -8,7 +8,7 @@ data class WeatherEntity (
 ) {
     data class LocalData (
 
-        val prefecture: Map<String, Int>
+        val prefecture: Map<String, String>
     )
 
     data class RemoteData (

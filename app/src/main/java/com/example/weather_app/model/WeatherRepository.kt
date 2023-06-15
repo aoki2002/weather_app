@@ -6,11 +6,11 @@ interface WeatherRepository {
 
     interface LocalRepository {
 
-        fun getAreaId(key: String)
+        fun getAreaId(key: String): String
     }
 
     interface RemoteRepository {
 
-        fun getWeather(keyword: String, callback: Callback<WeatherEntity>)
+        fun getWeather(id: String, callback: Callback<WeatherEntity.RemoteData>)
     }
 }

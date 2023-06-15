@@ -10,5 +10,5 @@ interface WeatherApiService {
     @GET("{id}.json")
     fun getWeather(
         @Path("id") id: String
-    ): Call<WeatherEntity>
+    ): Call<WeatherEntity.RemoteData>
 }
