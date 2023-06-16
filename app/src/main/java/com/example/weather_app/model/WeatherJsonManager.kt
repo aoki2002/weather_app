@@ -6,7 +6,7 @@ import java.io.File
 
 class WeatherJsonManager(context: Context): WeatherRepository.LocalRepository {
 
-    override fun getAreaId(key: String):String {
+    override fun getAreaId(key: String): String {
 
         val jsonFile = File("../assets/AreaNumber.json")
 

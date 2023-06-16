@@ -18,6 +18,8 @@ class WeatherPresenter(private val view: WeatherContract.View, private val local
 
         val id = localRepository.getAreaId(text)
 
+        view.showAreaTitleTextView(id)
+
         remoteRepository.getWeather(id, object: retrofit2.Callback<WeatherEntity.RemoteData> {
             override fun onResponse(call: retrofit2.Call<WeatherEntity.RemoteData>, response: Response<WeatherEntity.RemoteData>) {
 

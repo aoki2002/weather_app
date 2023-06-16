@@ -23,9 +23,8 @@ class WeatherFragment: Fragment(), WeatherContract.View {
     lateinit var areaTitleTextView :TextView
     lateinit var areaWeatherTextView :TextView
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.fragment_weather, container, false)
     }
 
