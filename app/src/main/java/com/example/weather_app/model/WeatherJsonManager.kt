@@ -1,19 +1,21 @@
 package com.example.weather_app.model
 
 import android.content.Context
-import com.google.gson.Gson
-import java.io.File
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import org.json.JSONObject
 
-class WeatherJsonManager(context: Context): WeatherRepository.LocalRepository {
+class WeatherJsonManager(private val context: Context): WeatherRepository.LocalRepository {
 
     override fun getAreaId(key: String): String {
 
-        val jsonFile = File("../assets/AreaNumber.json")
+        val assetManager = context.assets
+        val inputStream = assetManager.open("AreaNumber.json")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        val json: String? = bufferedReader.readText()
 
-        val json = jsonFile.readText()
+        val jsonObject = JSONObject(json)
 
-        val data = Gson().fromJson(json, WeatherEntity.LocalData::class.java)
-
-        return data.prefecture[key].toString()
+        return jsonObject.optString(key)
     }
 }

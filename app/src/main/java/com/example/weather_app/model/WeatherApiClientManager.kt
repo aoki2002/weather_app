@@ -15,7 +15,7 @@ class WeatherApiClientManager: WeatherRepository.RemoteRepository {
 
     private val apiClient = retrofit.create(WeatherApiService::class.java)
 
-    override fun getWeather(id: String, callback: Callback<WeatherEntity.RemoteData>) {
+    override fun getWeather(id: String, callback: Callback<WeatherEntity>) {
         apiClient.getWeather(id).enqueue(callback)
     }
 }
