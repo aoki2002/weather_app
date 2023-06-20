@@ -4,5 +4,5 @@ data class WeatherEntity (
 
     var targetArea: String = "",
 
-    var text: String = ""
+    var text: String = "",
 )

@@ -8,7 +8,9 @@ import retrofit2.http.Query
 interface WeatherApiService {
 
     @GET("{id}.json")
+
     fun getWeather(
+
         @Path("id") id: String
     ): Call<WeatherEntity>
 }

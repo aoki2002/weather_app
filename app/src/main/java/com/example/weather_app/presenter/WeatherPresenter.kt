@@ -14,30 +14,32 @@ class WeatherPresenter(private val view: WeatherContract.View, private val local
     }
 
     override fun start() {
+
     }
 
     override fun onClickButton(text: String) {
 
         val id = localRepository.getAreaId(text)
 
-//        view.showAreaTitleTextView(id)
-
         remoteRepository.getWeather(id, object: retrofit2.Callback<WeatherEntity> {
+
             override fun onResponse(call: retrofit2.Call<WeatherEntity>, response: Response<WeatherEntity>) {
 
                 if (response.isSuccessful) {
 
-                    response.body()?.targetArea?.get(0).let {
-                        Log.d("WeatherPresenter", "都道府県 : " + it.toString())
-                        view.showAreaTitleTextView(it.toString() + "の天気")
+                    response.body()?.targetArea?.let {
+
+                        view.showAreaTitleTextView(it + "の天気")
                     }
 
-                    response.body()?.text?.get(0).let {
-                        Log.d("WeatherPresenter", "概要 : " + it.toString())
-                        view.showAreaWeatherTextView(it.toString())
-                    }
-                } else {
+                    response.body()?.text?.let {
 
+                        val index = it.indexOf("【")
+
+                        val it = it.substring(0, index)
+
+                        view.showAreaWeatherTextView(it)
+                    }
                 }
             }
             override fun onFailure(call: retrofit2.Call<WeatherEntity>, t: Throwable) {

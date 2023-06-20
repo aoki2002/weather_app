@@ -1,6 +1,5 @@
 package com.example.weather_app.model
 
-import android.content.res.AssetManager
 import retrofit2.Callback
 
 interface WeatherRepository {

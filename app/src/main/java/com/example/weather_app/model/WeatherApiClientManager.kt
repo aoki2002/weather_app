@@ -1,10 +1,9 @@
 package com.example.weather_app.model
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 class WeatherApiClientManager: WeatherRepository.RemoteRepository {
 
@@ -16,6 +15,7 @@ class WeatherApiClientManager: WeatherRepository.RemoteRepository {
     private val apiClient = retrofit.create(WeatherApiService::class.java)
 
     override fun getWeather(id: String, callback: Callback<WeatherEntity>) {
+
         apiClient.getWeather(id).enqueue(callback)
     }
 }

@@ -1,6 +1,7 @@
 package com.example.weather_app.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,10 +47,12 @@ class WeatherFragment: Fragment(), WeatherContract.View {
     }
 
     override fun showAreaTitleTextView(text: String) {
+
         areaTitleTextView.text = text
     }
 
     override fun showAreaWeatherTextView(text: String) {
+
         areaWeatherTextView.text = text
     }
 }
