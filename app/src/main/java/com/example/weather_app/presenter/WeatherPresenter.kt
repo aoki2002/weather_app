@@ -1,25 +1,27 @@
 package com.example.weather_app.presenter
 
-import android.util.Log
 import com.example.weather_app.common.WeatherContract
 import com.example.weather_app.model.WeatherEntity
 import com.example.weather_app.model.WeatherRepository
 import retrofit2.Response
 
-
 class WeatherPresenter(private val view: WeatherContract.View, private val localRepository: WeatherRepository.LocalRepository, private val remoteRepository: WeatherRepository.RemoteRepository): WeatherContract.Presenter {
+
+    var id: String = ""
+    var index: Int = 1
+    var areaTitle: String = ""
+    var areaWeather: String = ""
 
     init {
         view.presenter = this
     }
 
     override fun start() {
-
     }
 
     override fun onClickButton(text: String) {
 
-        val id = localRepository.getAreaId(text)
+        id = localRepository.getAreaId(text)
 
         remoteRepository.getWeather(id, object: retrofit2.Callback<WeatherEntity> {
 
@@ -29,16 +31,23 @@ class WeatherPresenter(private val view: WeatherContract.View, private val local
 
                     response.body()?.targetArea?.let {
 
-                        view.showAreaTitleTextView(it + "の天気")
+                        areaTitle = it + "の天気"
+
+                        view.showAreaTitleTextView(areaTitle)
                     }
 
                     response.body()?.text?.let {
 
-                        val index = it.indexOf("【")
+                        areaWeather = it
 
-                        val it = it.substring(0, index)
+                        if (areaWeather.contains("【")) {
 
-                        view.showAreaWeatherTextView(it)
+                            index = areaWeather.indexOf("【")
+
+                            areaWeather = areaWeather.substring(0, index)
+                        }
+
+                        view.showAreaWeatherTextView(areaWeather)
                     }
                 }
             }
